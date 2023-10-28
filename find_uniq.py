@@ -10,23 +10,15 @@ def find_uniq(arr):
         
     # Para mais informações ; https://www.codewars.com/kata/585d7d5adb20cf33cb000235/train/python    
     """   
-    # Cria um dicionário para armazenar as contagens de ocorrências de cada elemento
-    cont = {}
-    
-    # Itera sobre o array
-    for n in arr: 
-        # Se a chave já existe no dicionário, incrementa o contador de ocorrências
-        if n in cont:
-            cont[n] += 1
-        else:
-            # Se a chave não existe no dicionário, cria a chave com contagem igual a 1
-            cont[n] = 1
-    
-    # Itera pelo dicionário de contagens
-    for chave, valor in cont.items():
-        # Retorna a chave (elemento) com valor igual a 1, que é o elemento único
-        if valor == 1:
-            return chave
+    # A ideia,é  se o primeiro e o segundo elementos da lista forem iguais,o "comum" (que se repete) pode ser um dos dois 
+    # Se o primeiro e o segundo elementos são diferentes.
+    # O terceiro (ou demais) são iguais porque a lista contém apénas um único elemento,
+    # então esse "unico", está provalmente se encontra no indice (0 ou 1)
+    comum = arr[0] if arr[0] == arr[1] else arr[2]
+        
+    for n in arr:
+        if n != comum:
+            return n
 
 # Exemplos de uso
 print(find_uniq([1, 1, 1, 2, 1, 1]))  # Deve retornar 2
